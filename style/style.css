@@ -1,0 +1,14 @@
+.start {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.finish {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: black;
+    color: red;
+    margin: 100px;
+}

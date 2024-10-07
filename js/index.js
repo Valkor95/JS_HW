@@ -1,6 +1,6 @@
 (function () {
-    const hours = 1;
-    const minutes = 25;
+    let hours = 1;
+    let minutes = 25;
 
     const example = document.querySelector('#example')
 
@@ -10,6 +10,17 @@
         <h1>${formatTime}<h1/>
         `
         title.classList.add('start')
-
     }
+
+    const funcTimer = () => {
+        minutes++;
+        timerUpdate();
+
+        if(hours === 1 && minutes === 27){
+            clearInterval(timer)
+        }
+    }
+
+    const timer = setInterval(funcTimer, 1000)
+
 })()

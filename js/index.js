@@ -17,7 +17,8 @@
         timerUpdate();
 
         if(hours === 1 && minutes === 27){
-            clearInterval(timer)
+            clearInterval(timer);
+            example.classList.replace('start', 'finish');
         }
     }
 

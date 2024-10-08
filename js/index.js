@@ -1,5 +1,5 @@
-import { getWeather } from "./fetch.js";
-import { displayData } from "./displayData.js";
+// import { getWeather } from "./fetch.js";
+// import { displayData } from "./displayData.js";
 
 (function () {
     const weatherDiv = document.querySelector('.card-body');

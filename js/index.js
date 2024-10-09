@@ -1,7 +1,13 @@
 (function () {
-    let hours = 0;
-    let minutes = 1;
-    let seconds = 25;
+    let initialHours = 0;
+    let initialMinutes = 1;
+    let initialSeconds = 25;
+
+
+
+    let hours = initialHours;
+    let minutes = initialMinutes;
+    let seconds = initialSeconds;
     let hoursEnd = null;
     let minutesEnd = null;
     let secondsEnd = null;
@@ -10,6 +16,9 @@
     const example = document.querySelector('#example')
     const buttonTimer = document.createElement('button')
     buttonTimer.textContent = 'Завести таймер';
+
+    const buttonReset = document.createElement('button');
+    buttonReset.textContent = 'Сбросить таймер';
 
     const timerUpdate = () => {
         const time = `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`
@@ -51,8 +60,19 @@
         }, 1000)
 
     };
+
+    const resetTimer = () => {
+        clearInterval(intervalId);
+        hours = initialHours;
+        minutes = initialMinutes;
+        seconds = initialSeconds;
+        timerUpdate();
+    };
+
     buttonTimer.addEventListener('click', startTimer);
+    buttonReset.addEventListener('click', resetTimer);
     example.insertAdjacentElement('afterend', buttonTimer);
+    example.insertAdjacentElement('afterend', buttonReset);
     timerUpdate()
 
 })()

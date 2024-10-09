@@ -1,12 +1,12 @@
-const apiKey = 'e7e3d66c2dafbe50adb8343082912ce9';
-const lat = 46.40;
-const lon = 30.50;
+import {displayData} from "./displayData.js";
 
-export const getWeather = async (func) => {
-    const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`);
+export const getAPI = async (value) => {
+    const response = await fetch(`https://swapi.dev/api/${value}`);
     if (!response.ok) {
         throw new Error(`Ошибка: ${response.status}`);
     }
     const data = await response.json();
-    func(data);
+
+    displayData(data.results || data);
+
 };

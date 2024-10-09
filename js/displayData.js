@@ -1,21 +1,43 @@
 export const displayData = (data) => {
-    const weatherDiv = document.querySelector('.card-body');
+    const infoDiv = document.querySelector('div .info');
+    infoDiv.innerHTML = ''
 
     try {
-        let weatherInfo = `<h1>Погода в ${data.name}</h1>`;
-        weatherInfo += `<p><span>Координаты:</span> (${data.coord.lat}, ${data.coord.lon})</p>`;
+        if (Array.isArray(data)) {
+            data.forEach(info => {
+                const infoItem = document.createElement('div');
 
-        weatherInfo += `<h2>Основные параметры:</h2>`;
-        for (const key in data.main) {
-            weatherInfo += `<p><span>${key}:</span> ${data.main[key]}</p>`;
+                infoItem.classList.add('card', 'mb-3');
+
+                const cardBody = document.createElement('div');
+                cardBody.classList.add('card-body');
+
+                Object.entries(info).forEach(([key, value]) => {
+                    const item = document.createElement('p');
+                    item.innerHTML = `<strong>${key}:</strong> ${value}`;
+                    cardBody.append(item);
+                });
+
+                infoItem.append(cardBody)
+                infoDiv.append(infoItem);
+            });
+        } else {
+            const infoItem = document.createElement('div');
+            infoItem.classList.add('card', 'mb-3');
+
+            const cardBody = document.createElement('div');
+            cardBody.classList.add('card-body');
+
+            Object.entries(data).forEach(([key, value]) => {
+                const item = document.createElement('p');
+                item.innerHTML = `<strong>${key}:</strong> ${value}`;
+                cardBody.append(item);
+            });
+            infoItem.append(cardBody);
+            infoDiv.append(infoItem);
         }
 
-        weatherInfo += `<h2>Дополнительные условия:</h2>`;
-        for (const condition of data.weather) {
-            weatherInfo += `<p><span>${condition.main}:</span> ${condition.description}</p>`;
-        }
-        weatherDiv.innerHTML = weatherInfo;
-    } catch (error) {
-        weatherDiv.innerHTML = `<p>${error.message}</p>`;
+    } catch (error){
+        infoDiv.innerHTML = `<p>${error.message}</p>`;
     }
 };

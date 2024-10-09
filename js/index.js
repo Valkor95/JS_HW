@@ -1,15 +1,20 @@
-// import { getWeather } from "./fetch.js";
-// import { displayData } from "./displayData.js";
+import { getAPI } from "./fetch.js";
 
 (function () {
-    const weatherDiv = document.querySelector('.card-body');
-    const buttonRechange = document.querySelector('.btn');
+    const infoDiv = document.querySelector('.info');
+    const buttonsDiv = document.querySelector('.buttons');
 
-    getWeather(displayData).catch(error => {
-        weatherDiv.innerHTML = `<p>Ошибка при получении данных о погоде: ${error.message}</p>`;
-    });
+    function buttonClick(event) {
+        if (event.target.tagName === 'BUTTON') {
+            if (event.target.classList.contains('planets')) {
+                getAPI('planets')
+            } else if (event.target.classList.contains('people')) {
+                getAPI('people')
+            } else if (event.target.classList.contains('vehicles')) {
+                getAPI('vehicles')
+            }
+        }
+    }
 
-    buttonRechange.addEventListener('click', () => getWeather(displayData).catch(error => {
-        weatherDiv.innerHTML = `<p>Ошибка при получении данных о погоде: ${error.message}</p>`;
-    }))
+    buttonsDiv.addEventListener('click', buttonClick)
 })();

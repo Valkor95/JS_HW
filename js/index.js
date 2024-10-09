@@ -3,76 +3,71 @@
     let initialMinutes = 1;
     let initialSeconds = 25;
 
-
-
-    let hours = initialHours;
-    let minutes = initialMinutes;
-    let seconds = initialSeconds;
-    let hoursEnd = null;
-    let minutesEnd = null;
-    let secondsEnd = null;
     let intervalId = null;
+    let elapsedTime = 0;
+    let remainingTime = null;
 
-    const example = document.querySelector('#example')
-    const buttonTimer = document.createElement('button')
+    const example = document.querySelector('#example');
+    const buttonTimer = document.createElement('button');
     buttonTimer.textContent = 'Завести таймер';
 
     const buttonReset = document.createElement('button');
     buttonReset.textContent = 'Сбросить таймер';
 
-    const timerUpdate = () => {
-        const time = `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`
-        example.innerHTML = `
-        <h1>${time}</h1>
-        `
-    }
+    // Начальное время в секундах
+    let totalTimeInSeconds = initialHours * 3600 + initialMinutes * 60 + initialSeconds;
 
-    const timer = () => {
-        hoursEnd = parseInt(prompt("Введіть години", "0"), 10);
-        minutesEnd = parseInt(prompt("Введіть хвилини", "0"), 10);
-        secondsEnd = parseInt(prompt("Введіть секунди", "0"), 10);
+    const timerUpdate = (time) => {
+        let hours = Math.floor(time / 3600);
+        let minutes = Math.floor((time % 3600) / 60);
+        let seconds = time % 60;
 
-    }
+        const formattedTime = `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+        example.innerHTML = `<h1>${formattedTime}</h1>`;
+    };
 
     const startTimer = () => {
-        timer();
+        let addSeconds = parseInt(prompt("Введіть час у секундах", "0"), 10);
+
+        if (isNaN(addSeconds) || addSeconds < 0) {
+            alert('Будь ласка, введіть коректне число.');
+            return;
+        }
+
+        // elapsedTime = 0;
+        if (remainingTime !== null) {
+            totalTimeInSeconds += remainingTime; // Продолжаем с оставшимся временем
+        } else {
+            remainingTime = addSeconds; // Сохраняем новое значение
+        }
 
         intervalId = setInterval(() => {
-            seconds++;
-            if (seconds === 60){
-                minutes++;
-                seconds = 0;
-            }
-            if (minutes === 60) {
-                hours++
-                minutes = 0;
-            }
-            if (hours === 24) hours = 0;
+            elapsedTime++;
+            remainingTime--;
 
-            timerUpdate();
+            let currentTotalTimeInSeconds = totalTimeInSeconds + elapsedTime;
 
-            if (hours > hoursEnd ||
-                (hours === hoursEnd && minutes > minutesEnd) ||
-                (hours === hoursEnd && minutes === minutesEnd && seconds >= secondsEnd)){
+            timerUpdate(currentTotalTimeInSeconds);
+
+
+            if (remainingTime <= 0) {
                 clearInterval(intervalId);
-                alert('Таймер завершив роботу!')
+                alert('Таймер завершив роботу!');
+                remainingTime = null;
             }
-        }, 1000)
-
+        }, 1000);
     };
 
     const resetTimer = () => {
         clearInterval(intervalId);
-        hours = initialHours;
-        minutes = initialMinutes;
-        seconds = initialSeconds;
-        timerUpdate();
+        elapsedTime = 0;
+        remainingTime = null;
+        timerUpdate(totalTimeInSeconds);
     };
 
     buttonTimer.addEventListener('click', startTimer);
     buttonReset.addEventListener('click', resetTimer);
     example.insertAdjacentElement('afterend', buttonTimer);
     example.insertAdjacentElement('afterend', buttonReset);
-    timerUpdate()
-
-})()
+    timerUpdate(totalTimeInSeconds);
+})();

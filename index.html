@@ -53,8 +53,23 @@
                 <!-- Moment.js -->
                 <div class="card">
                     <div class="card-body">
-
+                        My birthday:
                     </div>
+                </div>
+
+                <!-- Form birthday -->
+                <div class="container mt-4">
+                    <h3>Enter your birthday (format DD/MM/YYYY):</h3>
+                    <div id="alertPlaceholder"></div>
+                    <form id="birthdateForm">
+                        <div class="mb-3">
+                            <label for="birthdate" class="form-label">Date of birth</label>
+                            <input type="text" class="form-control" id="birthdate" placeholder="DD/MM/YYYY">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Transform</button>
+                    </form>
+
+                    <div class="mt-4" id="result"></div>
                 </div>
 
             </div>

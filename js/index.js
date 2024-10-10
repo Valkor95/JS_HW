@@ -12,7 +12,7 @@
         } else {
 
             const wrapper = document.createElement('div')
-            wrapper.classList.add('alert-wrapper');
+            wrapper.classList.add('alert-wrapper', 'p-3');
             wrapper.innerHTML = [
                 `<div class="alert alert-${type} alert-dismissible" role="alert">`,
                 `   <div>${message}</div>`,
@@ -20,7 +20,7 @@
                 '</div>'
             ].join('')
 
-            alertPlaceholder.append(wrapper);
+            alertPlaceholder.insertAdjacentElement('afterend' , wrapper);
             alertVisible = true;
         }
     }
@@ -36,7 +36,7 @@
     const alertTrigger = document.getElementById('liveAlertBtn')
     if (alertTrigger) {
         alertTrigger.addEventListener('click', () => {
-            appendAlert('Nice, you triggered this alert message!', 'success')
+            appendAlert('Click again to remove this alert!', 'success')
         })
     }
 })()

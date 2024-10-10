@@ -1,0 +1,16 @@
+{
+  "dependencies": {
+    "bootstrap": "^5.3.3",
+    "moment": "^2.30.1"
+  },
+  "name": "js_hw",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}

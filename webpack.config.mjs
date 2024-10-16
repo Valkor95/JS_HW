@@ -1,9 +1,9 @@
-import path from 'path';
-import HtmlWebpackPlugin from 'html-webpack-plugin';
-import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import TerserPlugin from 'terser-webpack-plugin';
 import CssMinimizerPlugin from 'css-minimizer-webpack-plugin';
 import ImageMinimizerPlugin from 'image-minimizer-webpack-plugin';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import path from 'path';
 
 export default {
     entry: './src/js/index.js',
@@ -30,44 +30,40 @@ export default {
                     'sass-loader',
                 ],
             },
-            {
-                test: /\.(png|jpe?g|gif|svg)$/i,
-                type: 'asset/resource',
-                generator: {
-                    filename: 'images/[hash][ext][query]',
-                },
-            },
-        ],
-    },
-    optimization: {
-        minimize: true,
-        minimizer: [
-            new TerserPlugin(),
-            new CssMinimizerPlugin(),
         ],
     },
     plugins: [
         new HtmlWebpackPlugin({
-            template: './src/index.html',
+            template: './public/index.html',
         }),
         new MiniCssExtractPlugin({
-            filename: 'styles.css',
-        }),
-        new ImageMinimizerPlugin({
-            test: /\.(png|jpe?g|gif|svg)$/i,
-            minimizerOptions: {
-                plugins: [
-                    ['imagemin-mozjpeg', { quality: 75 }],
-                    ['imagemin-pngquant', { quality: [0.65, 0.90] }],
-                ],
-            },
+            filename: 'style.css',
         }),
     ],
-    devtool: 'source-map',
-    devServer: {
-        contentBase: path.join(process.cwd(), 'dist'),
-        compress: true,
-        port: 9000,
+    optimization: {
+        minimizer: [
+            new TerserPlugin(),
+            new CssMinimizerPlugin(),
+            new ImageMinimizerPlugin({
+                minimizer: {
+                    implementation: ImageMinimizerPlugin.imageminGenerate,
+                    options: {
+                        plugins: [
+                            ['gifsicle', { interlaced: true }],
+                            ['jpegtran', { progressive: true }],
+                            ['optipng', { optimizationLevel: 5 }],
+                            ['svgo', {
+                                plugins: [
+                                    {
+                                        name: 'removeViewBox',
+                                        active: false,
+                                    },
+                                ],
+                            }],
+                        ],
+                    },
+                },
+            }),
+        ],
     },
-    watch: true,
 };

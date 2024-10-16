@@ -1,11 +1,25 @@
 (function () {
-    const filtrFunc = function (text, ...values) {
-        const argumentsData = Array.isArray(values[0]) ? values[0] : values;
 
-        const newText = text.split("").filter(item => !argumentsData.includes(item)).join("")
-        return newText;
+    const arrValue = [3, 'welcome', true, 3, 6, 'end']
+    const arrValue2 = ['welcome', true, 'end', '3']
+
+    const filtrArr = function (arr) {
+        let sum = 0;
+        let quantity = 0;
+
+        for (let i = 0; i < arr.length; i++){
+            if(typeof arr[i] === 'number'){
+                quantity++;
+                sum += arr[i];
+            }
+        }
+
+        const average = quantity === 0 ? 'There are no numbers at all!' : sum/quantity;
+        return average;
     }
 
-    console.log(filtrFunc( "Hello, World!", 'l', 'd'))
-    console.log(filtrFunc( "Hello, World!", ['l', 'd', 'o']))
+    console.log(filtrArr( arrValue))
+    console.log(filtrArr( arrValue2))
+
+
 })()

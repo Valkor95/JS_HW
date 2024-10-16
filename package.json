@@ -6,6 +6,7 @@
   "name": "js_hw",
   "version": "1.0.0",
   "main": "index.js",
+  "type": "module",
   "devDependencies": {
     "css-loader": "^7.1.2",
     "css-minimizer-webpack-plugin": "^7.0.0",
@@ -21,7 +22,8 @@
     "webpack-dev-server": "^5.1.0"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "webpack --config webpack.config.js",
+    "start": "webpack serve --config webpack.config.js"
   },
   "author": "",
   "license": "ISC",

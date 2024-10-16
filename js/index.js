@@ -1,25 +1,15 @@
 (function () {
 
-    const arrValue = [3, 'welcome', true, 3, 6, 'end']
-    const arrValue2 = ['welcome', true, 'end', '3']
+    const array = [1, 3, 4, 6, 2, 5, 7]
 
-    const filtrArr = function (arr) {
-        let sum = 0;
-        let quantity = 0;
+    const removeItem = (arr, item) => {
+        const newArr = arr.filter(value => value !== item)
 
-        for (let i = 0; i < arr.length; i++){
-            if(typeof arr[i] === 'number'){
-                quantity++;
-                sum += arr[i];
-            }
-        }
-
-        const average = quantity === 0 ? 'There are no numbers at all!' : sum/quantity;
-        return average;
+        return newArr;
     }
 
-    console.log(filtrArr( arrValue))
-    console.log(filtrArr( arrValue2))
+    console.log(removeItem( array, 4))
+    console.log(removeItem( array, 1))
 
 
 })()

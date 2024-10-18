@@ -8,6 +8,7 @@
             this.addTodo = this.addTodo.bind(this);
             this.removeTodo = this.removeTodo.bind(this);
             this.addToServer = this.addToServer.bind(this);
+            this.render =  this.render.bind(this);
 
             this.addBtn.addEventListener('click', this.addTodo);
         }
@@ -15,15 +16,7 @@
         addTodo(){
             const taskText = this.todoInput.value;
             if (taskText){
-                const listItem = document.createElement('li');
-                listItem.textContent = taskText;
-
-                const removeBtn = document.createElement('button');
-                removeBtn.textContent = 'Remove';
-                removeBtn.addEventListener('click', this.removeTodo);
-
-                listItem.append(removeBtn);
-                this.todoList.append(listItem);
+                this.render(taskText)
 
                 this.todoInput.value = '';
             }
@@ -47,6 +40,18 @@
             }).then(result => {
                 console.log(result)
             })
+        }
+
+        render(valueTodo){
+            const listItem = document.createElement('li');
+            listItem.textContent = valueTodo;
+
+            const removeBtn = document.createElement('button');
+            removeBtn.textContent = 'Remove';
+            removeBtn.addEventListener('click', this.removeTodo);
+
+            listItem.append(removeBtn);
+            this.todoList.append(listItem);
         }
     }
 

@@ -7,6 +7,7 @@
 
             this.addTodo = this.addTodo.bind(this);
             this.removeTodo = this.removeTodo.bind(this);
+            this.addToServer = this.addToServer.bind(this);
 
             this.addBtn.addEventListener('click', this.addTodo);
         }
@@ -26,11 +27,26 @@
 
                 this.todoInput.value = '';
             }
+            this.addToServer(taskText)
         }
 
         removeTodo(event){
             const listItem = event.target.parentElement;
             this.todoList.removeChild(listItem);
+        }
+
+        addToServer(value){
+            const serverUrl = 'http://localhost:3000/api/users/'
+
+            fetch(serverUrl, {
+                method: 'POST',
+                body: JSON.stringify({id: Date.now().toString(), name: value}),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            }).then(result => {
+                console.log(result)
+            })
         }
     }
 

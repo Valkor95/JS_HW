@@ -33,31 +33,30 @@ app.post(mainURL, function (req, res) {
     const newUser = req.body;
     users.push(newUser);
 
-    res.send('Ok!')
+    res.json(newUser);
 })
 
 app.put(`${mainURL}:id`, function (req, res) {
-    const userId = parseInt(req.params.id);
-    const updatedData = req.body;
+    const userId = req.params.id;
+    const updatedUser = req.body;
 
-    let user = users.find(u => u.id === userId);
+    const userIndex = users.findIndex(u => u.id === userId);
 
-    if(user){
-        user.name = updatedData.name || user.name;
-        res.send(`User with ID ${userId} updated successfully!`)
+    if(userIndex !== -1){
+        users[userIndex] = {...users[userIndex], ...updatedUser};
+        res.json(users[userIndex]);
     } else {
         res.status(404).send('User not found');
     }
 });
 
 app.delete(`${mainURL}:id`, function (req, res) {
-    const userId = parseInt(req.params.id);
-    const initialLength = users.length;
+    const userId = req.params.id;
+    const userIndex = users.findIndex(user => user.id === userId)
 
-    users = users.filter(u => u.id !== userId);
-
-    if(users.length < initialLength){
-        res.send(`User with ID ${userId} deleted successfully!`)
+    if(userIndex !== -1){
+        users = users.filter(user => user.id !== userId);
+        res.sendStatus(204)
     } else {
         res.status(404).send('User not found')
     }

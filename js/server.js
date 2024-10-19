@@ -20,17 +20,46 @@ app.use(express.json());
 app.use(cors());
 
 const PORT = 3000;
+const mainURL = '/api/users/'
 
-const users = [{id: 1, name: 'Mary'}, {id:2, name: 'Helen'}]
+let users = [{id: 1, name: 'Mary'}, {id:2, name: 'Helen'}]
 app.listen(PORT, () => console.log("Server started"));
 
-app.get('/api/users/', function (req, res) {
+app.get(mainURL, function (req, res) {
     res.send(JSON.stringify(users));
 })
 
-app.post('/api/users/', function (req, res) {
+app.post(mainURL, function (req, res) {
     const newUser = req.body;
     users.push(newUser);
 
     res.send('Ok!')
+})
+
+app.put(`${mainURL}:id`, function (req, res) {
+    const userId = parseInt(req.params.id);
+    const updatedData = req.body;
+
+    let user = users.find(u => u.id === userId);
+
+    if(user){
+        user.name = updatedData.name || user.name;
+        res.send(`User with ID ${userId} updated successfully!`)
+    } else {
+        res.status(404).send('User not found');
+    }
+});
+
+app.delete(`${mainURL}:id`, function (req, res) {
+    const userId = parseInt(req.params.id);
+    const initialLength = users.length;
+
+    users = users.filter(u => u.id !== userId);
+
+    if(users.length < initialLength){
+        res.send(`User with ID ${userId} deleted successfully!`)
+    } else {
+        res.status(404).send('User not found')
+    }
+
 })

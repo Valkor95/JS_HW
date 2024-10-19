@@ -10,6 +10,8 @@
             this.addTodo = this.addTodo.bind(this);
             this.removeTodo = this.removeTodo.bind(this);
             this.addToServer = this.addToServer.bind(this);
+            this.updateOnServer = this.updateOnServer.bind(this);
+            this.deleteFromServer = this.deleteFromServer.bind(this);
             this.render =  this.render.bind(this);
             this.getAllData = this.getAllData.bind(this);
 
@@ -29,7 +31,12 @@
 
         removeTodo(event){
             const listItem = event.target.parentElement;
-            this.todoList.removeChild(listItem);
+            const taskId = listItem.dataset.id;
+
+
+            this.deleteFromServer(taskId).then(() => {
+                this.todoList.removeChild(listItem);
+            }).catch(err => console.error('Error while deleting:', err))
         }
 
         addToServer(value){
@@ -40,8 +47,29 @@
                 headers: {
                     'Content-Type': 'application/json'
                 }
-            }).then(result => {
-                console.log(result)
+            }).then(response => response.json())
+                .then(result => {
+                this.render(result.name, result.id);
+            })
+                .catch(error => {
+                    console.log('Error while adding:', error);
+                })
+        }
+
+        updateOnServer(taskId, updatedValue){
+            fetch(`${this.serverUrl}${taskId}`,{
+                method: 'PUT',
+                body: JSON.stringify({name: updatedValue}),
+            })
+        }
+
+        deleteFromServer(taskId){
+            return fetch(`${this.serverUrl}${taskId}`,{
+                method: 'DELETE',
+            }).then(response => {
+                if(!response.ok){
+                    throw new Error('Failed to delete task');
+                }
             })
         }
 

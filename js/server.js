@@ -22,7 +22,7 @@ app.use(cors());
 const PORT = 3000;
 const mainURL = '/api/users/'
 
-let users = [{id: '1', name: 'Mary'}, {id:'2', name: 'Helen'}]
+let users = [{id: '1', name: 'Mary'}, {id:'2', name: 'Helen'}, {id:'3', name: 'Helen'}]
 app.listen(PORT, () => console.log("Server started"));
 
 app.get(mainURL, function (req, res) {

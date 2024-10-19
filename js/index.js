@@ -22,11 +22,9 @@
         addTodo(){
             const taskText = this.todoInput.value;
             if (taskText){
-                this.render(taskText)
-
+                this.addToServer(taskText)
                 this.todoInput.value = '';
             }
-            this.addToServer(taskText)
         }
 
         removeTodo(event){
@@ -60,6 +58,14 @@
             fetch(`${this.serverUrl}${taskId}`,{
                 method: 'PUT',
                 body: JSON.stringify({name: updatedValue}),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            }).then(response => response.json())
+                .then(() => {
+                    console.log(`Task with ID ${taskId} updated successfully.`)
+                }).catch(error => {
+                console.log('Error while updating:', error)
             })
         }
 
@@ -73,15 +79,27 @@
             })
         }
 
-        render(valueTodo){
+        render(valueTodo, taskId){
             const listItem = document.createElement('li');
             listItem.textContent = valueTodo;
+            listItem.dataset.id = taskId;
 
             const removeBtn = document.createElement('button');
             removeBtn.textContent = 'Remove';
             removeBtn.addEventListener('click', this.removeTodo);
 
-            listItem.append(removeBtn);
+            const updateBtn = document.createElement('button');
+            updateBtn.textContent = 'Update';
+            updateBtn.addEventListener('click', () => {
+                const updatedValue = prompt('Update task:', valueTodo);
+                if (updatedValue){
+                    listItem.firstChild.textContent = updatedValue;
+                    this.updateOnServer(taskId, updatedValue);
+                    listItem.append(removeBtn, updateBtn);
+                }
+            })
+
+            listItem.append(removeBtn, updateBtn);
             this.todoList.append(listItem);
         }
 
@@ -89,8 +107,9 @@
             fetch(this.serverUrl)
                 .then(response => response.json())
                 .then(data => {
+                    this.todoList.innerHTML = '';
                     data.forEach(item => {
-                        this.render(item.name);
+                        this.render(item.name, item.id);
                     })
                 })
                 .catch(error => {

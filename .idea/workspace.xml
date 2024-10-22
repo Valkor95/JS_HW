@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2987396f-ccc6-4c7f-aa40-a1c31b0030fb" name="Changes" comment="REACT_HW24.1_v3_'add component Image '">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my-react-app/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/my-react-app/src/App.js" afterDir="false" />
+    <list default="true" id="2987396f-ccc6-4c7f-aa40-a1c31b0030fb" name="Changes" comment="REACT_HW24.1_v5_'add grid for component Cards '">
+      <change beforePath="$PROJECT_DIR$/my-react-app/src/Components/CardsInfo.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/my-react-app/src/Components/CardsInfo.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,22 +34,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/FED/JS_HW&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;npm.build.executor&quot;: &quot;Run&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "D:/FED/JS_HW",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.standard": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.standard": "",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "npm.build.executor": "Run",
+    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\WebStorm2023.3\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="npm.build">
     <configuration name="build" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
@@ -138,7 +138,23 @@
       <option name="project" value="LOCAL" />
       <updated>1729623788239</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="REACT_HW24.1_v4_'add component Button '">
+      <option name="closed" value="true" />
+      <created>1729625948212</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1729625948212</updated>
+    </task>
+    <task id="LOCAL-00005" summary="REACT_HW24.1_v5_'add grid for component Cards '">
+      <option name="closed" value="true" />
+      <created>1729629060324</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1729629060324</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -148,6 +164,8 @@
     <MESSAGE value="REACT_HW24.1_v1_'add React config'" />
     <MESSAGE value="REACT_HW24.1_v2_'add React bootstrap'" />
     <MESSAGE value="REACT_HW24.1_v3_'add component Image '" />
-    <option name="LAST_COMMIT_MESSAGE" value="REACT_HW24.1_v3_'add component Image '" />
+    <MESSAGE value="REACT_HW24.1_v4_'add component Button '" />
+    <MESSAGE value="REACT_HW24.1_v5_'add grid for component Cards '" />
+    <option name="LAST_COMMIT_MESSAGE" value="REACT_HW24.1_v5_'add grid for component Cards '" />
   </component>
 </project>

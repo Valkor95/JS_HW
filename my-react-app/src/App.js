@@ -2,6 +2,7 @@ import Image from "./Components/Image";
 import img from "./img/SW.png"
 import {Button, Col, Container, Row} from "react-bootstrap";
 import {useEffect, useState} from "react";
+import CardsInfo from "./Components/CardsInfo";
 
 function App() {
     const [data, setData] = useState([]);
@@ -19,7 +20,7 @@ function App() {
             setLoading(true);
             try{
                 const response = await fetch('https://swapi.dev/api/planets/');
-                const dataSw = response.json();
+                const dataSw = await response.json();
                 setData(dataSw.results);
             } catch (e){
                 console.error("Error fetching data:", e);
@@ -33,7 +34,7 @@ function App() {
     }, [fetchData]);
 
   return (
-    <div className="App">
+    <div className="App" key={Date.now()}>
         <Container fluid style={{height: '100vh'}}>
              <Image
                 src={img}
@@ -65,12 +66,17 @@ function App() {
                     </Col>
                 </Row>
             }
-            {data &&
-                <Row className='justify-content-center align-items-center'>
-                    <Col xs="auto">
-
-                    </Col>
-                </Row>}
+            {data && data.map((planet) => (
+                        <Row className='justify-content-center align-items-center' style={{marginTop: '20px'}}>
+                            <Col xs="auto">
+                                <CardsInfo
+                                    key={planet.name + Date.now()}
+                                    SWInfo={planet}
+                                />
+                            </Col>
+                        </Row>
+                    ))
+            }
         </Container>
     </div>
   );

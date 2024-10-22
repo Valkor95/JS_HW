@@ -5,6 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2987396f-ccc6-4c7f-aa40-a1c31b0030fb" name="Changes" comment="REACT_HW24.1_v5_'add grid for component Cards '">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my-react-app/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/my-react-app/src/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/my-react-app/src/Components/CardsInfo.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/my-react-app/src/Components/CardsInfo.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -154,7 +156,15 @@
       <option name="project" value="LOCAL" />
       <updated>1729629060324</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="REACT_HW24.1_v5_'add grid for component Cards '">
+      <option name="closed" value="true" />
+      <created>1729629645588</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1729629645588</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

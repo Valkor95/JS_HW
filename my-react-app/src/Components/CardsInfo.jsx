@@ -1,15 +1,21 @@
 import Card from 'react-bootstrap/Card';
 
-function CardsInfo(data) {
+function CardsInfo({SWInfo}) {
     return (
-        <Card style={{ width: '18rem' }}>
+        <Card style={{ width: '22rem' }}>
             <Card.Body>
-                <Card.Title>{data.name}</Card.Title>
-                <Card.Subtitle className="mb-2 text-muted">Card Subtitle</Card.Subtitle>
-                <Card.Text>
-                    Some quick example text to build on the card title and make up the
-                    bulk of the card's content.
-                </Card.Text>
+                <Card.Title>{SWInfo.name}</Card.Title>
+                {Object.entries(SWInfo)
+
+                    .map(([key, value]) => (
+                        <div key={key+value}>
+                            <Card.Subtitle className="mt-3 text-muted">{key}:</Card.Subtitle>
+                            <Card.Text>
+                                {value}
+                            </Card.Text>
+                        </div>
+                    ))
+                }
             </Card.Body>
         </Card>
     );

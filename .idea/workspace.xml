@@ -4,13 +4,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2987396f-ccc6-4c7f-aa40-a1c31b0030fb" name="Changes" comment="REACT_HW24.1_v1_'add React config'">
+    <list default="true" id="2987396f-ccc6-4c7f-aa40-a1c31b0030fb" name="Changes" comment="REACT_HW24.1_v3_'add component Image '">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my-react-app/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/my-react-app/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my-react-app/src/Components/Image.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/my-react-app/src/Components/Image.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my-react-app/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/my-react-app/src/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JSX File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -106,6 +116,23 @@
       <workItem from="1729615937441" duration="645000" />
       <workItem from="1729616593467" duration="347000" />
     </task>
+    <task id="LOCAL-00001" summary="REACT_HW24.1_v2_'add React bootstrap'">
+      <option name="closed" value="true" />
+      <created>1729617745700</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1729617745700</updated>
+    </task>
+    <task id="LOCAL-00002" summary="REACT_HW24.1_v3_'add component Image '">
+      <option name="closed" value="true" />
+      <created>1729622654897</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1729622654897</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -113,6 +140,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="REACT_HW24.1_v1_'add React config'" />
-    <option name="LAST_COMMIT_MESSAGE" value="REACT_HW24.1_v1_'add React config'" />
+    <MESSAGE value="REACT_HW24.1_v2_'add React bootstrap'" />
+    <MESSAGE value="REACT_HW24.1_v3_'add component Image '" />
+    <option name="LAST_COMMIT_MESSAGE" value="REACT_HW24.1_v3_'add component Image '" />
   </component>
 </project>
